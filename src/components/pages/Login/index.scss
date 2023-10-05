@@ -1,0 +1,13 @@
+.login {
+    padding: 5rem 0;
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    background-color: skyblue;
+    &_form {
+        &_row {
+            display: flex;
+        }
+    }
+}
