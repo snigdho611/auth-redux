@@ -1,31 +1,32 @@
-import React, { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect } from "react";
 import "./index.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { AuthState } from "../../../store/auth";
-import { login, getUser } from "../../../store/auth";
+import { useNavigate } from "react-router-dom";
+import { useLogin } from "../../../hooks/useLogin";
+import { AuthState, saveLogin } from "../../../store/auth";
 
 const Login = () => {
-    const [credentials, setCredentials] = useState<{ email: string; password: string }>({
-        email: "snigdho.howlader@gmail.com",
-        password: "1234",
-    });
-    const user = useSelector((state: AuthState) => state.user);
+    const auth = useSelector((state: AuthState) => state.auth);
     const dispatch = useDispatch();
 
-    // console.log(user);
+    // console.log(auth);
 
-    // useEffect(() => {
-    // dispatch(getUser());
-    // }, [dispatch]);
+    const { credentials, setCredentials, login, data } = useLogin();
+    const navigate = useNavigate();
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        if (credentials.email === "snigdho.howlader@gmail.com" && credentials.password === "1234") {
-            console.log(credentials);
-            localStorage.setItem("user", credentials.email);
-            dispatch(login(credentials));
-        }
+        console.log(data);
+        login();
+        // console.log(data);
+        navigate("/page");
     };
+
+    useEffect(() => {
+        if (data) {
+            dispatch(saveLogin(data));
+        }
+    }, [data, dispatch]);
 
     return (
         <div className="login">
@@ -33,7 +34,7 @@ const Login = () => {
                 <div className="login_form_row">
                     <label htmlFor="">Email:</label>
                     <input
-                        value={credentials.email}
+                        value={credentials?.email}
                         onChange={(e) => setCredentials((prevState) => ({ ...prevState, email: e.target.value }))}
                         type="text"
                         name=""
