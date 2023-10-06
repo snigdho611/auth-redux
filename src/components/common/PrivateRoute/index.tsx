@@ -1,27 +1,15 @@
-import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-// import AccessDenied from './pages/AccessDenied'
-// import { ROLE } from './features/auth/auth'
-// import { selectCurrentUser, selectIsAuthenticated } from './features/auth/authSlice'
+import { useSelector } from "react-redux";
+import { AuthState } from "../../../store/auth";
 
-interface Props {
-    component: React.ComponentType;
-    path?: string;
-    roles: Array<ROLE>;
-}
+// export { PrivateRoute };
 
-export const PrivateRoute: React.FC<Props> = ({ component: RouteComponent, roles }) => {
-    const user = useSelector(selectCurrentUser);
-    const isAuthenticated = useSelector(selectIsAuthenticated);
-    const userHasRequiredRole = user && roles.includes(user.role) ? true : false;
+export const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+    const auth = useSelector((state: AuthState) => state.auth);
 
-    if (isAuthenticated && userHasRequiredRole) {
-        // return <RouteComponent />
+    if (!auth.email) {
+        return <Navigate to="/login" />;
     }
 
-    if (isAuthenticated && !userHasRequiredRole) {
-        // return <AccessDenied />
-    }
-
-    return <Navigate to="/" />;
+    return children;
 };

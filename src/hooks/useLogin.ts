@@ -9,11 +9,11 @@ export const useLogin = () => {
         token: string;
         email: string;
     } | null>(() => {
-        const token = localStorage.getItem("token");
-        const email = localStorage.getItem("email");
-        if (token && email) {
-            return { token: token, email: email };
-        }
+        // const token = localStorage.getItem("token");
+        // const email = localStorage.getItem("email");
+        // if (token && email) {
+        //     return { token: token, email: email };
+        // }
         return null;
     });
 
