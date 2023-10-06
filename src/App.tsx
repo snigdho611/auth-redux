@@ -7,16 +7,17 @@ import { useSelector } from "react-redux";
 import { AuthState } from "./store/auth";
 
 function App() {
-    const auth = useSelector((state: AuthState) => state.auth);
-    console.log(auth);
+    // const auth = useSelector((state: AuthState) => state.auth);
+    // console.log(auth);
 
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/login" element={<Login />}></Route>
-                <Route element={auth.email ? <Outlet /> : <Navigate to={"/login"} />}>
+                <Route path="/page" element={<Home />}></Route>
+                {/* <Route element={auth.email ? <Outlet /> : <Navigate to={"/login"} />}>
                     <Route path="/page" element={<Home />}></Route>
-                </Route>
+                </Route> */}
             </Routes>
         </BrowserRouter>
     );

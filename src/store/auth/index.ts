@@ -9,8 +9,8 @@ export interface AuthState {
 }
 
 const initialState: { email: string | null; token: string | null } = {
-    email: null,
-    token: null,
+    email: localStorage.getItem("email") ?? null,
+    token: localStorage.getItem("token") ?? null,
 };
 
 export const authSlice = createSlice({

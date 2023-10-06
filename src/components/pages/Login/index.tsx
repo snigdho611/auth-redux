@@ -16,10 +16,10 @@ const Login = () => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         login();
         // console.log(data);
-        navigate("/page");
+        // navigate("/page");
     };
 
     useEffect(() => {
