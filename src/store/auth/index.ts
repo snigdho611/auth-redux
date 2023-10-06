@@ -2,28 +2,27 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface AuthState {
-    user: string | null;
+    auth: {
+        email: string | null;
+        token: string | null;
+    };
 }
 
-const initialState: AuthState = {
-    user: "",
+const initialState: { email: string | null; token: string | null } = {
+    email: null,
+    token: null,
 };
 
 export const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        login: (state, action: PayloadAction<{ email: string; password: string }>) => {
-            state.user = action.payload.email;
-        },
-        getUser: (state) => {
-            // if (state.user) {
-            state.user = localStorage.getItem("user");
-            // }
-            // state.user;
+        saveLogin: (state, action: PayloadAction<{ email: string; token: string }>) => {
+            state.email = action.payload.email;
+            state.token = action.payload.token;
         },
     },
 });
 
-export const { login, getUser } = authSlice.actions;
+export const { saveLogin } = authSlice.actions;
 export default authSlice.reducer;
