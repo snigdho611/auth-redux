@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import Login from "../../pages/Login";
 import { Navigate } from "react-router-dom";
 
 interface IPrivateRouteProps {
