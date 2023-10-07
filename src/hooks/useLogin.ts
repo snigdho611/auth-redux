@@ -8,17 +8,10 @@ export const useLogin = () => {
     const [data, setData] = useState<{
         token: string;
         email: string;
-    } | null>(() => {
-        // const token = localStorage.getItem("token");
-        // const email = localStorage.getItem("email");
-        // if (token && email) {
-        //     return { token: token, email: email };
-        // }
-        return null;
-    });
+    } | null>(null);
 
     const login = () => {
-        fetch(`http://127.0.0.1:8000/auth/login`, {
+        fetch(`http://127.0.0.1:8000/api/auth/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(credentials),

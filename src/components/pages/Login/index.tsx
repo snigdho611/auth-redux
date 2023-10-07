@@ -1,25 +1,17 @@
 import { FormEvent, useEffect } from "react";
 import "./index.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useLogin } from "../../../hooks/useLogin";
-import { AuthState, saveLogin } from "../../../store/auth";
+import { saveLogin } from "../../../store/auth";
 
 const Login = () => {
-    const auth = useSelector((state: AuthState) => state.auth);
     const dispatch = useDispatch();
 
-    // console.log(auth);
-
     const { credentials, setCredentials, login, data } = useLogin();
-    const navigate = useNavigate();
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        // console.log(data);
         login();
-        // console.log(data);
-        // navigate("/page");
     };
 
     useEffect(() => {
