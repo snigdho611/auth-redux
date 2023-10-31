@@ -1,13 +1,43 @@
-.login {
-    padding: 5rem 0;
+.form {
+    padding: 2.5rem 0;
     width: 50%;
-    margin: 0 auto;
+    margin: 4rem auto;
     display: flex;
     justify-content: center;
     background-color: skyblue;
-    &_form {
-        &_row {
-            display: flex;
+    border-radius: 0.5rem;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    column-gap: 0.25rem;
+    row-gap: 0.5rem;
+    width: 50%;
+    box-shadow: 4px 3px 15px 3px #ccc;
+    background-image: linear-gradient(to right, #60c4d7, #9ae3f2);
+
+    &_label {
+        text-align: end;
+        padding: 0.25rem 0.5rem;
+    }
+
+    &_input {
+        width: 80%;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+    }
+
+    &_button {
+        grid-column: span 2;
+        width: 25%;
+        margin: 0.75rem auto;
+        cursor: pointer;
+        padding: 0.25rem 0.5rem;
+        background-color: #3cc8e4;
+        // color: azure;
+        border-radius: 0.5rem;
+        transition: 0.25s color, 0.25s background-color;
+
+        &:hover {
+            background-color: #9ae3f2;
         }
     }
 }

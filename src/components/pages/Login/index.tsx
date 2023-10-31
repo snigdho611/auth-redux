@@ -1,4 +1,4 @@
-import { FormEvent, useEffect } from "react";
+import { FormEvent } from "react";
 import "./index.scss";
 import { useDispatch } from "react-redux";
 import { useLogin } from "../../../hooks/useLogin";
@@ -6,48 +6,60 @@ import { saveLogin } from "../../../store/auth";
 
 const Login = () => {
     const dispatch = useDispatch();
-
-    const { credentials, setCredentials, login, data } = useLogin();
+    const { credentials, setCredentials } = useLogin();
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        login();
+        dispatch(
+            saveLogin({
+                _id: "1234",
+                email: "snigdho.howlader@gmail.com",
+                role: "admin",
+                token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.cThIIoDvwdueQB468K5xDc5633seEFoqwxjF_xSJyQQ",
+                user: {
+                    _id: "2345",
+                    name: "Snigdho Dip Howlader",
+                    phone: "+1 (222) 222-2222",
+                },
+                verified: true,
+            })
+        );
     };
 
-    useEffect(() => {
-        if (data) {
-            dispatch(saveLogin(data));
-        }
-    }, [data, dispatch]);
-
     return (
-        <div className="login">
-            <form className="login_form" onSubmit={handleSubmit}>
-                <div className="login_form_row">
-                    <label htmlFor="">Email:</label>
-                    <input
-                        value={credentials?.email}
-                        onChange={(e) => setCredentials((prevState) => ({ ...prevState, email: e.target.value }))}
-                        type="text"
-                        name=""
-                        id=""
-                    />
-                </div>
-                <div className="login_form_row">
-                    <label htmlFor="">Password:</label>
-                    <input
-                        value={credentials.password}
-                        onChange={(e) => setCredentials((prevState) => ({ ...prevState, password: e.target.value }))}
-                        type="text"
-                        name=""
-                        id=""
-                    />
-                </div>
-                <div className="login_form_row">
-                    <button type="submit">Log In</button>
-                </div>
-            </form>
-        </div>
+        <form className="form" onSubmit={handleSubmit}>
+            <label className="form_label" htmlFor="">
+                Email:
+            </label>
+            <input
+                className="form_input"
+                value={credentials?.email}
+                onChange={(e) =>
+                    setCredentials((prevState) => ({
+                        ...prevState,
+                        email: e.target.value,
+                    }))
+                }
+                type="text"
+            />
+            <label className="form_label" htmlFor="">
+                Password:
+            </label>
+            <input
+                className="form_input"
+                value={credentials.password}
+                onChange={(e) =>
+                    setCredentials((prevState) => ({
+                        ...prevState,
+                        password: e.target.value,
+                    }))
+                }
+                type="text"
+            />
+            <button className="form_button" type="submit">
+                Log In
+            </button>
+        </form>
     );
 };
 
