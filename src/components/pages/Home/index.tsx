@@ -1,22 +1,18 @@
-import { useDispatch, useSelector } from "react-redux";
-import { IAuthState, removeLogin } from "../../../store/auth";
+import { useSelector } from "react-redux";
+import "./index.scss"
+import Navbar from "../../common/Navbar";
+import { IAuthStateProp } from "../../../interfaces";
 
 const Home = () => {
-    const dispatch = useDispatch();
-    const login = useSelector((state: IAuthState) => state.auth);
+    // const dispatch = useDispatch();
+    const login = useSelector((state: IAuthStateProp) => state.auth);
 
     console.log(login);
 
     return (
-        <div>
-            <span>You are logged in</span>
-            <button
-                onClick={() => {
-                    dispatch(removeLogin());
-                }}
-            >
-                Log Out
-            </button>
+        <div className="home">
+            <Navbar />
+            <h2 className="home_header">You are logged in!</h2>
         </div>
     );
 };

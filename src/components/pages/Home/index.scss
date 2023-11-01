@@ -1,0 +1,10 @@
+.home {
+    display: flex;
+    flex-direction: column;
+
+    &_header {
+        margin-top: 30px;
+        font-size: 50px;
+        color: azure;
+    }
+}

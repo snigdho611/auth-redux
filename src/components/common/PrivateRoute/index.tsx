@@ -1,16 +1,10 @@
-import { ReactNode } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
+import { IAuthStateProp } from "../../../interfaces";
+import { useSelector } from "react-redux";
 
-interface IPrivateRouteProps {
-    auth: { email: string | null; token: string | null };
-    element: ReactNode;
-}
-
-const PrivateRoute: React.FC<IPrivateRouteProps> = ({ auth, element }) => {
-    if (auth && auth.email) {
-        return element;
-    }
-    return <Navigate to={"/login"} />;
+const PrivateRoute: React.FC = () => {
+    const auth = useSelector((state: IAuthStateProp) => state.auth);
+    return auth.username && auth.id && auth.token ? <Outlet /> : <Navigate to={"/login"} />
 };
 
 export default PrivateRoute;

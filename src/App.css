@@ -3,7 +3,11 @@
   text-align: center;
 }
 
+html {
+  background: linear-gradient(135deg, #4e00f3, #2d005a) no-repeat center center fixed;
+}
+
 body {
   margin: 0;
-  background-image: linear-gradient(to right, #ffffff, #c0f5ff);
+  background-position: left top;
 }

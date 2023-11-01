@@ -4,24 +4,18 @@ import Login from "./components/pages/Login";
 import Home from "./components/pages/Home";
 import PrivateRoute from "./components/common/PrivateRoute";
 import { useSelector } from "react-redux";
-import { IAuthState } from "./store/auth";
+import { IAuthStateProp } from "./interfaces";
 
 function App() {
-    const auth = useSelector((state: IAuthState) => state.auth);
+    const auth = useSelector((state: IAuthStateProp) => state.auth);
 
     return (
         <BrowserRouter>
             <Routes>
-                <Route
-                    path="/login"
-                    element={
-                        !auth.email ? <Login /> : <Navigate to={"/page"} />
-                    }
-                />
-                <Route
-                    path="/page"
-                    element={<PrivateRoute auth={auth} element={<Home />} />}
-                />
+                <Route path="/login" element={!auth.username ? <Login /> : <Navigate to={"/page"} />} />
+                <Route element={<PrivateRoute />} >
+                    <Route path="/page" element={<Home />} />
+                </Route>
             </Routes>
         </BrowserRouter>
     );

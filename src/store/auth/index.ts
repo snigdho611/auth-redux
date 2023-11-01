@@ -1,58 +1,47 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-interface AuthState {
-    _id: string | null;
-    email: string | null;
-    role: string | null;
-    verified: boolean | null;
-    token: string | null;
-    user: {
-        _id: string | null;
-        name: string | null;
-        phone: string | null;
-    };
-}
 export interface IAuthState {
-    auth: AuthState;
+    id: number | null;
+    username: string | null;
+    firstName: string | null;
+    lastName: string | null;
+    gender: string | null;
+    image: string | null;
+    token: string | null;
 }
 
-const initialState: AuthState = {
-    _id: null,
-    email: null,
-    role: null,
-    verified: null,
+const initialState: IAuthState = {
+    id: null,
+    username: null,
+    firstName: null,
+    lastName: null,
+    gender: null,
+    image: null,
     token: null,
-    user: {
-        _id: null,
-        name: null,
-        phone: null,
-    },
 };
 
 export const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        saveLogin: (state, action: PayloadAction<AuthState>) => {
-            state._id = action.payload._id;
-            state.email = action.payload.email;
-            state.role = action.payload.role;
+        saveLogin: (state, action: PayloadAction<IAuthState>) => {
+            state.id = action.payload.id;
+            state.username = action.payload.username;
+            state.firstName = action.payload.firstName;
+            state.lastName = action.payload.lastName;
+            state.gender = action.payload.gender;
+            state.image = action.payload.image;
             state.token = action.payload.token;
-            state.verified = action.payload.verified;
-            state.user._id = action.payload.user?._id;
-            state.user.name = action.payload.user?.name;
-            state.user.phone = action.payload.user?.phone;
         },
         removeLogin: (state) => {
-            state._id = null;
-            state.email = null;
-            state.role = null;
+            state.id = null;
+            state.username = null;
+            state.firstName = null;
+            state.lastName = null;
+            state.gender = null;
+            state.image = null;
             state.token = null;
-            state.verified = null;
-            state.user._id = null;
-            state.user.name = null;
-            state.user.phone = null;
         },
     },
 });
