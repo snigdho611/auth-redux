@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <nav className="nav">
       {
-        auth.token ? <button className="nav_button"
+        auth.username && auth.id && auth.token ? <button className="nav_button"
           onClick={() => {
             dispatch(removeLogin());
           }}
