@@ -3,8 +3,10 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./components/pages/Login";
 import Home from "./components/pages/Home";
 import PrivateRoute from "./components/common/PrivateRoute";
+import { useSelector } from "react-redux";
 
 function App() {
+  const auth = useSelector((state) => state.auth);
 
   return (
     <BrowserRouter>
