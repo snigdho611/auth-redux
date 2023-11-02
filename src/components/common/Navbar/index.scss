@@ -1,0 +1,22 @@
+.nav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    justify-content: flex-end;
+    // background-image: linear-gradient(to right, #60c4d7, #9ae3f2);
+    background-color: #ffffff;
+    height: 30px;
+
+    &_button {
+        background-color: #87cbff;
+        width: 10%;
+        border-radius: 0.25rem;
+        transition: 0.25s color, 0.25s background-color;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #9ae3f2;
+        }
+    }
+}

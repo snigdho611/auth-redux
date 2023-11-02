@@ -1,0 +1,56 @@
+.form {
+    padding: 2.5rem 0;
+    margin: 5rem auto;
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(3, 2fr);
+    column-gap: 0.25rem;
+    row-gap: 0.5rem;
+    width: 50%;
+    box-shadow: 4px 3px 15px 3px #250355;
+    width: 40%;
+
+    &_head {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    &_label,
+    &_input,
+    &_button {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    &_label {
+        padding: 0.25rem 0.5rem;
+        display: flex;
+        align-items: center;
+    }
+
+    &_input {
+        padding: 0.25rem 0.5rem;
+        width: 77.5%;
+        border-radius: 0.25rem;
+        background-color: #d8cff5;
+    }
+
+    &_button {
+        margin: 0.75rem auto;
+        cursor: pointer;
+        padding: 0.25rem 0.5rem;
+        background-color: #3cc8e4;
+        // color: azure;
+        border-radius: 0.5rem;
+        transition: 0.25s color, 0.25s background-color;
+        width: 50%;
+
+        &:hover {
+            background-color: #9ae3f2;
+        }
+    }
+}
