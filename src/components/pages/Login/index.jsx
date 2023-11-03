@@ -77,7 +77,7 @@ const Login = () => {
                             password: e.target.value,
                         }))
                     }
-                    type="text"
+                    type="password"
                 />
                 <button className="form_button" type="submit">
                     Log In
